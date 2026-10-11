@@ -1,0 +1,550 @@
+/* =========================================================
+   CSS-ПЕРЕМЕННЫЕ (добавлено — их не было, но они используются
+   во всём файле: --brand, --bg-primary, --border-color и т.д.)
+   ========================================================= */
+:root {
+  --brand: #FF5A00;
+  --brand-hover: #E64F00;
+  --bg-primary: #050505;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Сброс и базовая типографика (тоже отсутствовала) */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 48px;
+  }
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari */
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 20px 48px;
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.logo span {
+  color: var(--brand);
+}
+
+.navLinks {
+  display: none;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+  }
+}
+
+.navLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s var(--ease-premium);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.phoneBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-premium), background 0.3s;
+}
+
+.phoneBtn:hover {
+  background: #E5E5E5;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 140px; /* padding-top увеличен, чтобы не наезжать на fixed navbar */
+  overflow: hidden;
+}
+
+.heroGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  max-width: 100%; /* защита от горизонтального скролла на мобильных */
+  background: radial-gradient(circle, rgba(255, 90, 0, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 90, 0, 0.3);
+  background: rgba(255, 90, 0, 0.1);
+  color: var(--brand);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 8vw, 6rem); /* нижняя граница уменьшена для маленьких экранов */
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0 0 24px;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%);
+  -webkit-background-clip: text;
+  background-clip: text; /* добавлено — стандартное свойство */
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* фолбэк */
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.heroButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .heroButtons {
+    flex-direction: row;
+  }
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-premium), background 0.3s;
+}
+
+.btnPrimary:hover {
+  background: var(--brand-hover);
+}
+
+.btnSecondary {
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.3s var(--ease-premium), border-color 0.3s;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #333;
+}
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+.marqueeWrapper {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(5, 5, 5, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 16px 0;
+  overflow: hidden;
+}
+
+.marqueeContent {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  width: max-content;
+  /* ВАЖНО: сама анимация — см. @keyframes ниже */
+  animation: marquee 30s linear infinite;
+}
+
+/* Дублируем содержимое через псевдоэлемент уже не нужно —
+   в JSX элементы продублированы вручную (для бесшовности) */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* смещение = половина контента (у нас контент продублирован) */
+    transform: translateX(-50%);
+  }
+}
+
+/* Уважение к настройкам доступности */
+@media (prefers-reduced-motion: reduce) {
+  .marqueeContent {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   EMERGENCY BANNER
+   ========================================================= */
+.emergencyBanner {
+  background: var(--brand);
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.emergencyContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .emergencyContent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.emergencyIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* не сжимается во flex-контейнере */
+}
+
+.emergencyText {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .emergencyText {
+    text-align: left;
+  }
+}
+
+.emergencyText h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* нижняя граница уменьшена */
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0 0 8px;
+  color: white;
+}
+
+.emergencyText p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.emergencyPhone {
+  background: white;
+  color: var(--brand);
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-premium);
+  white-space: nowrap;
+}
+
+.emergencyPhone:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   BLOG SECTION
+   ========================================================= */
+.blogSection {
+  padding: 120px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .blogSection {
+    padding: 120px 48px;
+  }
+}
+
+.sectionHeader {
+  margin-bottom: 64px;
+}
+
+.sectionLabel {
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.sectionTitle span {
+  color: var(--text-secondary);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 32px;
+  transition: transform 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium);
+  cursor: pointer;
+  height: 100%; /* одинаковая высота карточек в ряду */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 90, 0, 0.5);
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--brand);
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.card:hover .cardIcon {
+  background: rgba(255, 90, 0, 0.15);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  transition: color 0.3s;
+}
+
+.card:hover .cardTitle {
+  color: var(--brand);
+}
+
+.cardDesc {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  flex-grow: 1; /* прижимает cardLink к низу */
+}
+
+.cardLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.3s;
+  margin-top: auto;
+}
+
+.card:hover .cardLink {
+  color: var(--text-primary);
+}
+
+.cardLink svg {
+  transition: transform 0.3s var(--ease-premium);
+}
+
+.card:hover .cardLink svg {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 64px 24px;
+  background: var(--bg-primary);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding: 64px 48px;
+  }
+}
+
+.footerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .footerContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.footerCopyright {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footerLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s;
+}
+
+.footerLink:hover {
+  color: var(--text-primary);
+}
