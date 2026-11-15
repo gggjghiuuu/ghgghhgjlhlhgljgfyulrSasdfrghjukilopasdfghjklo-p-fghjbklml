@@ -637,7 +637,7 @@ export default function App() {
             </motion.div>
             <motion.a
               variants={fadeInUp}
-              href="https://drive.google.com/"
+              href="https://disk.yandex.ru/d/0tigkFPX3ODxag"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.driveButton}
